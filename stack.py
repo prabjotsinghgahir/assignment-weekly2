@@ -1,7 +1,7 @@
 import os
 from deploy_scripts import stack_deploy
 
-template_name = 'templates/assignment-stack.yaml'
+template_name = 'template/assignment-stack.yaml'
 stack_name = 'assignment2'
 source_bucket_name = "cf-tag-bucket-psg"
 region = 'ap-south-1'
