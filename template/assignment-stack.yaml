@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Week-2-task
+Parameters:
+  SourceBucketName:
+    Type: String
+    Default: "tag-bucket-psg"
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref SourceBucketName
