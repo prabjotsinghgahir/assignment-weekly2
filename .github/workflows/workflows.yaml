@@ -14,7 +14,6 @@ on:
 jobs:
   create_update_stack:
     runs-on: ubuntu-latest
-    needs: upload-files
     defaults:
       run:
         shell: bash
