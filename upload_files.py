@@ -15,15 +15,15 @@ class Upload:
         self.directory = cwd
         self.tag_key_value_pair1 = f"{key_tag1}={value_tag1}"
         self.tag_key_value_pair2 = f"{key_tag2}={value_tag2}"
-        self.metadata_key_value_pair1 = f"{metadata_key1}:{metadata_value1}"
-        self.metadata_key_value_pair2 = f"{metadata_key2}:{metadata_value2}"
+        self.metadata_key_value_pair1 = {metadata_key1: metadata_value1, metadata_key2: metadata_value2} #f"'{metadata_key1}':'{metadata_value1}'"
+        self.metadata_key_value_pair2 = {metadata_key2: metadata_value2} #f"'{metadata_key2}':'{metadata_value2}'"
 
     def upload_object_tag(self):
         count = 1
         try:
             for files in os.listdir(self.directory):
                 if count <= 2:
-                    print(f"Files in the directory: {files}")
+                    #  print(f"Files in the directory: {files}")
                     s3_client.put_object(
                         Body = os.path.join(self.directory, files),
                         Bucket = self.bucket_name,
@@ -36,6 +36,26 @@ class Upload:
                         Bucket=self.bucket_name,
                         Key=files,
                         Tagging=f'{self.tag_key_value_pair2}'
+                    )
+                elif 4 < count <= 6:
+                    s3_client.put_object(
+                        Body=os.path.join(self.directory, files),
+                        Bucket=self.bucket_name,
+                        Key=files,
+                        Metadata = self.metadata_key_value_pair1
+                    )
+                elif 6 < count <= 8:
+                    s3_client.put_object(
+                        Body=os.path.join(self.directory, files),
+                        Bucket=self.bucket_name,
+                        Key=files,
+                        Metadata=self.metadata_key_value_pair2
+                    )
+                else:
+                    s3_client.put_object(
+                        Body=os.path.join(self.directory, files),
+                        Bucket=self.bucket_name,
+                        Key=files
                     )
                 count = count + 1
         except FileNotFoundError:
