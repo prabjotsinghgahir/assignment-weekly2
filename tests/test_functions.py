@@ -40,9 +40,9 @@ def test_delete_tag_meta():
     """Delete Tag test case"""
     delete_obj.delete_tag()
     rs = s3_client.list_objects(Bucket=bucket_name)
-    assert len(rs['Contents']) == 8
+    assert len(rs['Contents']) == 8 # Tag test case
 
     """Delete Metadata test case"""
     delete_obj.delete_meta()
     rs = s3_client.list_objects(Bucket=bucket_name)
-    assert len(rs['Contents']) == 4
+    assert len(rs['Contents']) == 4 # Metadata test case
