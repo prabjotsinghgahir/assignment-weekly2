@@ -1,4 +1,4 @@
-
+# GirHub Workflow
 name: Deployment of assignment1
 
 run-name: Deploying resources for assignment 2
@@ -10,6 +10,7 @@ on:
   pull_request:
     branches:
       - "main"
+  workflow_dispatch:
 
 jobs:
   create_update_stack:
