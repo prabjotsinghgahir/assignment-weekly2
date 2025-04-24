@@ -1,4 +1,3 @@
-import os
 from deploy_scripts import stack_deploy
 
 template_name = 'template/assignment-stack.yaml'

@@ -22,38 +22,39 @@ class Upload:
         count = 1
         try:
             for files in os.listdir(self.directory):
+                file_obj = open(os.path.join(self.directory, files), 'r').read()
                 if count <= 2:
                     #  print(f"Files in the directory: {files}")
                     s3_client.put_object(
-                        Body = os.path.join(self.directory, files),
+                        Body = file_obj,
                         Bucket = self.bucket_name,
                         Key = files,
                         Tagging = f'{self.tag_key_value_pair1}'
                     )
                 elif 2 < count <= 4:
                     s3_client.put_object(
-                        Body=os.path.join(self.directory, files),
+                        Body=file_obj,
                         Bucket=self.bucket_name,
                         Key=files,
                         Tagging=f'{self.tag_key_value_pair2}'
                     )
                 elif 4 < count <= 6:
                     s3_client.put_object(
-                        Body=os.path.join(self.directory, files),
+                        Body=file_obj,
                         Bucket=self.bucket_name,
                         Key=files,
                         Metadata = self.metadata_key_value_pair1
                     )
                 elif 6 < count <= 8:
                     s3_client.put_object(
-                        Body=os.path.join(self.directory, files),
+                        Body=file_obj,
                         Bucket=self.bucket_name,
                         Key=files,
                         Metadata=self.metadata_key_value_pair2
                     )
                 else:
                     s3_client.put_object(
-                        Body=os.path.join(self.directory, files),
+                        Body=file_obj,
                         Bucket=self.bucket_name,
                         Key=files
                     )
