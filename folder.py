@@ -15,7 +15,7 @@ def make_directory():
         os.mkdir(path)
         logging.info("Folder is created")
     except FileExistsError:
-        logging.info("Folder is already present")
+        logging.warning("Folder is already present")
 
 
 def create_file():
