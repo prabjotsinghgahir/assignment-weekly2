@@ -4,7 +4,7 @@ This has been made for weekly assignment2.
 
 Below is a short description of different files:
 1. .github/workflows/workflow.yaml => This is a github workflow file. This file runs when a push is happened on dev branch or pull request on main branch.
-2. deploy_scripts/stack_deploy.py => This file creates a cloudformation stack using templates/copy-object-stack.yaml file. If the stack is already present then it will update the stack(if any updates are there to perform).
+2. deploy_scripts/stack_deploy.py => This file creates a cloudformation stack using templates/assignment-stack.yaml file. If the stack is already present then it will update the stack(if any updates are there to perform).
 3. templates/assignment-stack.yaml => Cloudformation Template file.
 4. main.py => This file will fetch all the files from S3 and will delete the one with specific tags and metadata.
 5. folder.py => This file make a new folder Natural_Numbers in same directory. Then creates 10 files and write the name of the file as contents in the file, then adds these 10 text files in that folder Natural_Numbers.
